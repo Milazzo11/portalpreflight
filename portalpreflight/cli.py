@@ -67,7 +67,7 @@ def markdown(rec):
         L.append(f"| {p['name']} | **{p['verdict']}** | {'; '.join(fails) or '-'} | {'; '.join(warns) or '-'} |")
     L += ["", "| Measure | Value |", "|---|---|"]
     for k in ("total_mb", "file_count", "initial_mb", "first_paint_s", "ttg_s", "external_requests", "absolute_paths",
-              "remote_scripts", "page_errors", "insecure_urls", "peak_js_heap_mb", "axe_violations", "touch_changes_frame"):
+              "remote_scripts", "page_errors", "input_errors", "missing_files", "insecure_urls", "peak_js_heap_mb", "axe_violations", "touch_changes_frame"):
         if k in rec:
             L.append(f"| {k} | {_fmt(rec[k])} |")
     fix = []
@@ -78,6 +78,10 @@ def markdown(rec):
         fix.append(f"Make paths relative (portals host under a subpath): {', '.join(ex[:4])}")
     if rec.get("page_error_examples"):
         fix.append(f"Uncaught error on load: `{rec['page_error_examples'][0][:120]}`")
+    if rec.get("missing_file_examples"):
+        fix.append(f"Files requested but missing (404): {', '.join(rec['missing_file_examples'][:4])}")
+    if rec.get("input_error_examples"):
+        fix.append(f"Uncaught error after the first input: `{rec['input_error_examples'][0][:120]}`")
     if rec.get("browser_error"):
         fix.append(f"Browser run failed: {rec['browser_error'][:160]}")
     if not rec.get("root_index"):

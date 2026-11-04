@@ -61,6 +61,8 @@ PORTALS = {
         "name": "Any portal (hygiene)", "checked": "2026-11-04", "rules": [
             ("gen-crash", "page_errors", "==", 0, "must", "no uncaught JS errors on load", "",
              "an uncaught exception at start is the most common QA rejection"),
+            ("gen-missing", "missing_files", "==", 0, "must", "every file the game requests exists (no 404s)", "", ""),
+            ("gen-input-crash", "input_errors", "==", 0, "should", "no uncaught JS errors on first tap/click/Space", "", ""),
             ("gen-render", "renders", "true", None, "must", "draws something within the timeout", "", ""),
             ("gen-mixed", "insecure_urls", "==", 0, "should", "no http:// URLs (portals serve https)", "", ""),
             ("gen-input", "touch_changes_frame", "true", None, "should", "a tap changes the screen (mobile input)", "", ""),

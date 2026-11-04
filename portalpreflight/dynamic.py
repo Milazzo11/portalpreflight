@@ -103,7 +103,7 @@ def run(root, entry="index.html", throttle=True, viewport=(1280, 720), timeout_s
     srv, outside = serve(root)
     origin = f"http://127.0.0.1:{srv.server_address[1]}"
     host = urlparse(origin).netloc
-    reqs, failed, errors, console_err, pending = [], [], [], [], set()
+    reqs, failed, errors, console_err, pending, missing = [], [], [], [], set(), []
     with sync_playwright() as p:
         b = p.chromium.launch(args=["--enable-precise-memory-info", "--autoplay-policy=user-gesture-required"])
         ctx = b.new_context(viewport={"width": viewport[0], "height": viewport[1]}, has_touch=True)
@@ -131,7 +131,9 @@ def run(root, entry="index.html", throttle=True, viewport=(1280, 720), timeout_s
         page.on("requestfinished", on_done)
         page.on("requestfailed", lambda r: (failed.append(r.url), on_done(r)))
         page.on("console", lambda m: console_err.append(m.text[:200]) if m.type == "error" else None)
-        page.on("pageerror", lambda e: errors.append(str(e)[:200]))
+        page.on("pageerror", lambda e: errors.append((time.monotonic(), str(e)[:200])))
+        page.on("response", lambda r: missing.append(urlparse(r.url).path) if r.status >= 400
+                and urlparse(r.url).netloc == host and not r.url.endswith("favicon.ico") else None)
         heap = [0]
 
         def sample_heap():
@@ -167,6 +169,7 @@ def run(root, entry="index.html", throttle=True, viewport=(1280, 720), timeout_s
             page.wait_for_timeout(1000)
             h1, _, _ = _shot(page)
             ac_before = page.evaluate("window.__pf.ctx.map(c => c.state)")
+            t_input = time.monotonic()
             page.touchscreen.tap(viewport[0] // 2, viewport[1] // 2)
             page.mouse.click(viewport[0] // 2, viewport[1] // 2)
             page.keyboard.press("Space")
@@ -179,6 +182,7 @@ def run(root, entry="index.html", throttle=True, viewport=(1280, 720), timeout_s
             rec["audio_play_rejects"] = page.evaluate("window.__pf.playRejects")
             if throttle:
                 cdp.send("Emulation.setCPUThrottlingRate", {"rate": 1})
+            t_axe = time.monotonic()
             rec.update(axe(page))
             sample_heap()
         cut = t_nav + (ready if ready is not None else timeout_s)
@@ -198,8 +202,15 @@ def run(root, entry="index.html", throttle=True, viewport=(1280, 720), timeout_s
         rec["initial_mb_basis"] = "gzip bytes of own files requested before ttg (external bytes not counted)"
         rec["outside_subpath_requests"] = sorted(set(outside))[:10]
         rec["failed_requests"] = sorted(set(failed))[:10]
-        rec["page_errors"] = len(errors)
-        rec["page_error_examples"] = errors[:5]
+        t_in = locals().get("t_input") or float("inf")
+        t_ax = locals().get("t_axe") or float("inf")
+        errors = [(t, e) for t, e in errors if t < t_ax]  # later ones are raised by axe itself on prototype-patching pages
+        rec["page_errors"] = sum(1 for t, _ in errors if t < t_in)
+        rec["page_error_examples"] = [e for t, e in errors if t < t_in][:5]
+        rec["input_errors"] = sum(1 for t, _ in errors if t >= t_in)
+        rec["input_error_examples"] = [e for t, e in errors if t >= t_in][:5]
+        rec["missing_files"] = len(set(missing))
+        rec["missing_file_examples"] = sorted(set(missing))[:10]
         rec["console_errors"] = console_err[:10]
         rec["peak_js_heap_mb"] = round(heap[0] / 1e6, 1)
         b.close()
@@ -210,8 +221,11 @@ def run(root, entry="index.html", throttle=True, viewport=(1280, 720), timeout_s
 def axe(page):
     out = {}
     try:
-        page.add_script_tag(content=AXE.read_text())
-        r = page.evaluate("""async () => { const r = await axe.run(document, {runOnly: {type: 'tag',
+        # load axe in its own function scope: AMD/CommonJS pages (require.js, webpack) or a page global named `axe`
+        # would otherwise capture or shadow it
+        page.evaluate("src => { window.__pfAxe = new Function('define', 'module', 'exports', src + '\\n;return axe;')(); }",
+                      AXE.read_text())
+        r = page.evaluate("""async () => { const r = await window.__pfAxe.run(document, {runOnly: {type: 'tag',
             values: ['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']}});
             return r.violations.map(v => ({id: v.id, impact: v.impact, nodes: v.nodes.length})); }""")
         out["axe_violations"] = sum(v["nodes"] for v in r)
