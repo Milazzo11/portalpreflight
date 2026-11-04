@@ -21,7 +21,9 @@ def main(out, page):
          "Each game: Chromium on a throttled 4G link (9 Mbps, 170 ms RTT) with 4x CPU slowdown, served gzip-compressed under a "
          "subpath the way portals host it; median of the runs by time to gameplay. Verdicts cite each portal's published "
          "rules (see `portalpreflight/portals.py`); a preflight is not a portal's QA decision. These are open-source repos, "
-         "not the authors' portal submissions: many were never meant for a portal.", "",
+         "not the authors' portal submissions: many were never meant for a portal, and a game whose repo needs a build step "
+         "shows its missing build output as 404s (the scorecard measures what is committed). ttg = first non-blank frame "
+         "with the network quiet for 1 s (engine-agnostic; a title screen counts).", "",
          "| Game | " + " | ".join(names) + " | ttg s | initial MB | external req |",
          "|---|" + "---|" * (len(tg) + 3)]
     count = {t: {} for t in tg}
