@@ -12,4 +12,4 @@ a changed clause = edit portals.py + its quote. 0 tokens otherwise.
 ENERGY STAR: yes - deterministic, 0 tokens per run.
 
 STATUS
-2026-11-04 v0.1.0 built; corpus run in progress (task 7488).
+2026-11-04 v0.1.0: 20/20 open-source games, 0 crashes, 3 throttled runs each (results/2026-11-04/). GitHub-hosted Action run not yet exercised (needs a GitHub origin; corpus.yml runs on a corpus-* tag). Public flip + Marketplace + forum posts: controller go pending (PPF-3).
