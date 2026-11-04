@@ -7,6 +7,9 @@ inputs:
   path:
     description: Directory (or .zip) of the built game, with index.html at its root
     required: true
+  name:
+    description: Game name on the scorecard (default = the directory name)
+    default: ""
   targets:
     description: Comma-separated targets (crazygames,poki,playgama,devvit,generic)
     default: crazygames,poki,playgama,devvit,generic
@@ -26,15 +29,28 @@ runs:
     - if: inputs.static-only != 'true'
       shell: bash
       run: |
-        python3 -m pip install --quiet "playwright==1.48.0" "pillow>=10"
-        python3 -m playwright install --with-deps chromium >/dev/null
+        python3 -m venv "$RUNNER_TEMP/ppf-venv"
+        "$RUNNER_TEMP/ppf-venv/bin/pip" install --quiet "playwright==1.48.0" "pillow>=10"
+        "$RUNNER_TEMP/ppf-venv/bin/playwright" install --with-deps chromium >/dev/null
+        echo "PPF_PY=$RUNNER_TEMP/ppf-venv/bin/python" >> "$GITHUB_ENV"
     - id: pf
       shell: bash
+      # Inputs reach the script only through env (never ${{ }} in run:): a value cannot become shell code.
       env:
         PYTHONPATH: ${{ github.action_path }}
+        PF_PATH: ${{ inputs.path }}
+        PF_NAME: ${{ inputs.name }}
+        PF_TARGETS: ${{ inputs.targets }}
+        PF_FAIL_ON: ${{ inputs.fail-on }}
+        PF_STATIC: ${{ inputs.static-only }}
       run: |
         out="$RUNNER_TEMP/portalpreflight.json"
-        extra=""; [ "${{ inputs.static-only }}" = "true" ] && extra="--static-only"
-        python3 -m portalpreflight "${{ inputs.path }}" --targets "${{ inputs.targets }}" --fail-on "${{ inputs.fail-on }}" \
-          --format github --json-out "$out" $extra
-        echo "json=$out" >> "$GITHUB_OUTPUT"
+        args=()
+        if [ "$PF_STATIC" = "true" ]; then args+=(--static-only); fi
+        if [ -n "$PF_NAME" ]; then args+=(--name "$PF_NAME"); fi
+        rc=0
+        "${PPF_PY:-python3}" -m portalpreflight "$PF_PATH" --targets "$PF_TARGETS" --fail-on "$PF_FAIL_ON" \
+          --format github --json-out "$out" "${args[@]}" || rc=$?
+        # Set the output even on a failed verdict, so a later `if: always()` step can upload the record.
+        if [ -s "$out" ]; then echo "json=$out" >> "$GITHUB_OUTPUT"; fi
+        exit "$rc"

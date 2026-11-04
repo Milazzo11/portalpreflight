@@ -1,9 +1,12 @@
 # Dogfood: the Action itself, run on the 20 third-party games of corpus/games.json (manual, or push a tag corpus-*).
+# The report job commits the dated page + STATUS.json to branch corpus-results, readable with plain git (no gh needed).
 name: corpus
 on:
   workflow_dispatch:
   push:
     tags: ['corpus-*']
+permissions:
+  contents: read
 jobs:
   list:
     runs-on: ubuntu-latest
@@ -23,10 +26,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: fetch the game at its pinned commit
+        env:
+          GAME: ${{ matrix.game }}
         run: |
           python3 - <<'PY'
-          import json, io, tarfile, urllib.request
-          g = next(g for g in json.load(open("corpus/games.json"))["games"] if g["name"] == "${{ matrix.game }}")
+          import json, io, os, tarfile, urllib.request
+          g = next(g for g in json.load(open("corpus/games.json"))["games"] if g["name"] == os.environ["GAME"])
           url = "https://codeload.github.com/%s/tar.gz/%s" % (g["repo"].split("github.com/")[1], g["commit"])
           t = tarfile.open(fileobj=io.BytesIO(urllib.request.urlopen(url).read()))
           for m in t.getmembers():
@@ -38,8 +43,38 @@ jobs:
         uses: ./
         with:
           path: game
+          name: ${{ matrix.game }}
           fail-on: never
       - uses: actions/upload-artifact@v4
         with:
           name: scorecard-${{ matrix.game }}
           path: ${{ steps.pf.outputs.json }}
+          if-no-files-found: error
+  report:
+    needs: [list, preflight]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          path: arts
+          pattern: scorecard-*
+      - name: commit the dated page to corpus-results
+        env:
+          REF: ${{ github.ref_name }}
+        run: |
+          page="$RUNNER_TEMP/page"
+          python3 corpus/ci_report.py arts corpus/games.json "$page"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch origin corpus-results:corpus-results; then git switch corpus-results; else git switch --orphan corpus-results; fi
+          mkdir -p "./$REF"
+          cp -r "$page/." "./$REF/"
+          git add -- "./$REF"
+          git commit -m "corpus $REF: run $GITHUB_RUN_ID ($GITHUB_SHA)"
+          git push origin corpus-results
