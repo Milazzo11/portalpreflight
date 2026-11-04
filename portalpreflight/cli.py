@@ -38,6 +38,9 @@ def preflight(path, name=None, entry="index.html", targets=None, dynamic=True, t
             d = dyn.run(root, entry, throttle=throttle, shot_out=shot)
             rec.update(d)
             rec["absolute_paths"] = max(rec["absolute_paths"], len(d.get("outside_subpath_requests", [])))
+            loaded = [u for u in d.get("external_urls", []) if u.startswith("http://")]
+            rec["insecure_urls"] = len(set(rec["insecure_examples"]) | set(loaded))
+            rec["insecure_examples"] = sorted(set(rec["insecure_examples"]) | set(loaded))[:5]
         except Exception as e:  # report, never crash the scorecard
             rec["browser_error"] = f"{type(e).__name__}: {e}"[:300]
     rec["loadavg1"] = round(os.getloadavg()[0], 1)

@@ -35,6 +35,7 @@ def analyze(root, entry="index.html"):
     total = count = 0
     non_latin, big = [], []
     abs_paths, remote_scripts, insecure, ext_hosts, ads, sdks = [], [], [], set(), set(), set()
+    insecure_strings = set()  # http:// in JS: usually credit links, reported only
     eval_uses = 0
     for p, rel in files_of(root):
         count += 1
@@ -72,13 +73,13 @@ def analyze(root, entry="index.html"):
                 if not host.endswith((".org", ".w3.org")) or "cdn" in host:
                     ext_hosts.add(host)
                 if m.group(1) == "http:" and "w3.org" not in host and "localhost" not in host:
-                    insecure.append(m.group(0).strip("\"'`"))
+                    insecure_strings.add(m.group(0).strip("\"'`"))
     rec.update({
         "file_count": count, "total_mb": round(total / 1e6, 2), "non_latin_names": len(non_latin),
         "non_latin_examples": non_latin[:5], "big_files": big[:5], "absolute_paths": len(abs_paths),
         "absolute_path_examples": abs_paths[:5], "remote_scripts": len(remote_scripts),
         "remote_script_examples": remote_scripts[:5], "insecure_urls": len(set(insecure)),
-        "insecure_examples": sorted(set(insecure))[:5], "referenced_hosts": sorted(ext_hosts)[:20],
+        "insecure_examples": sorted(set(insecure))[:5], "insecure_js_strings": sorted(insecure_strings)[:5], "referenced_hosts": sorted(ext_hosts)[:20],
         "foreign_ad_sdks": len(ads), "ad_sdks": sorted(ads), "portal_sdks": sorted(sdks), "eval_uses": eval_uses,
     })
     return rec

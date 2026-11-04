@@ -64,7 +64,7 @@ PORTALS = {
             ("gen-missing", "missing_files", "==", 0, "must", "every file the game requests exists (no 404s)", "", ""),
             ("gen-input-crash", "input_errors", "==", 0, "should", "no uncaught JS errors on first tap/click/Space", "", ""),
             ("gen-render", "renders", "true", None, "must", "draws something within the timeout", "", ""),
-            ("gen-mixed", "insecure_urls", "==", 0, "should", "no http:// URLs (portals serve https)", "", ""),
+            ("gen-mixed", "insecure_urls", "==", 0, "should", "no http:// resources loaded (portals serve https)", "", ""),
             ("gen-input", "touch_changes_frame", "true", None, "should", "a tap changes the screen (mobile input)", "", ""),
             ("gen-a11y", "axe_violations", "==", 0, "should", "axe-core WCAG 2.2 AA violations = 0", "", ""),
         ]},

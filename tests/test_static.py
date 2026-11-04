@@ -31,7 +31,7 @@ class Static(unittest.TestCase):
         self.assertEqual(r["non_latin_names"], 1)
         self.assertEqual(r["eval_uses"], 1)
         self.assertEqual(r["ad_sdks"], ["AdSense"])
-        self.assertGreaterEqual(r["insecure_urls"], 1)
+        self.assertEqual(r["insecure_urls"], 1)  # the http:// <script>; JS strings are reported apart
 
     def test_no_index(self):
         r = static.analyze(bundle({"game.html": "x"}))

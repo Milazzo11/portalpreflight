@@ -132,7 +132,7 @@ def run(root, entry="index.html", throttle=True, viewport=(1280, 720), timeout_s
         page.on("requestfailed", lambda r: (failed.append(r.url), on_done(r)))
         page.on("console", lambda m: console_err.append(m.text[:200]) if m.type == "error" else None)
         page.on("pageerror", lambda e: errors.append((time.monotonic(), str(e)[:200])))
-        page.on("response", lambda r: missing.append(urlparse(r.url).path) if r.status >= 400
+        page.on("response", lambda r: missing.append((time.monotonic(), urlparse(r.url).path)) if r.status >= 400
                 and urlparse(r.url).netloc == host and not r.url.endswith("favicon.ico") else None)
         heap = [0]
 
@@ -209,8 +209,9 @@ def run(root, entry="index.html", throttle=True, viewport=(1280, 720), timeout_s
         rec["page_error_examples"] = [e for t, e in errors if t < t_in][:5]
         rec["input_errors"] = sum(1 for t, _ in errors if t >= t_in)
         rec["input_error_examples"] = [e for t, e in errors if t >= t_in][:5]
-        rec["missing_files"] = len(set(missing))
-        rec["missing_file_examples"] = sorted(set(missing))[:10]
+        missing = {m for t, m in missing if t < t_ax}  # axe's CSSOM preload re-fetches @imports itself
+        rec["missing_files"] = len(missing)
+        rec["missing_file_examples"] = sorted(missing)[:10]
         rec["console_errors"] = console_err[:10]
         rec["peak_js_heap_mb"] = round(heap[0] / 1e6, 1)
         b.close()
