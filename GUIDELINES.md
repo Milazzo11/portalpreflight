@@ -1,6 +1,6 @@
 # portalpreflight: guidelines (inherits the iLazy Global Set)
 
-inherits: iLazy GS11 (operator/GUIDELINES.md)
+inherits: iLazy GS15 (operator/GUIDELINES.md)
 
 - AMEND GL-TST1: suite = `python3 -m unittest discover -s tests`; corpus/run.py is the 20-game field test, not the suite.
 - ADD PPF-1: a portal rule enters portals.py only with its source URL and a verbatim quote (date in `checked`); a number

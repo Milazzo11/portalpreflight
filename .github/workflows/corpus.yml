@@ -1,6 +1,9 @@
-# Dogfood: the Action itself, run on the 20 third-party games of corpus/games.json (manual trigger).
+# Dogfood: the Action itself, run on the 20 third-party games of corpus/games.json (manual, or push a tag corpus-*).
 name: corpus
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    tags: ['corpus-*']
 jobs:
   list:
     runs-on: ubuntu-latest
