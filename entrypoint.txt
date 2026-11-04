@@ -1,0 +1,15 @@
+portalpreflight - entrypoint (R&D experiment 102a, iLazy task 7488, 2026-11-04)
+Portal-readiness scorecard for ANY HTML5 game build (engine-agnostic generalisation of imaker tools/web_preflight.py,
+which is Flutter-only and stays imaker's gate). Code: portalpreflight/ (static.py stdlib bundle checks; dynamic.py
+Playwright run served under /game/ subpath, 4G + 4x CPU; portals.py cited rules per target; cli.py scorecards
+md/json/github). action.yml = composite GitHub Action. tests/ = suite. corpus/ = 20 pinned open-source games +
+run.py (field test; results land in iLazy shared/tasks/7488/data/). Read order: this file, README.md, GUIDELINES.md.
+Status: see STATUS at the end of this file.
+Known limits: ttg_s is "first non-blank frame + network quiet 1 s" (no portal-SDK gameplay events yet); initial_mb counts
+own files only; touch_changes_frame is n/a for games animating while idle; the real-iPhone tier (Lazarus) is not built.
+UPKEEP: portal rule re-checks ride ruleradar's daily snapshots (crazygames-technical already; Poki/Playgama pages to add);
+a changed clause = edit portals.py + its quote. 0 tokens otherwise.
+ENERGY STAR: yes - deterministic, 0 tokens per run.
+
+STATUS
+2026-11-04 v0.1.0 built; corpus run in progress (task 7488).

@@ -1,0 +1,40 @@
+name: Portal Preflight
+description: Portal-readiness scorecard for an HTML5 game build (CrazyGames, Poki, Playgama, Devvit) - each verdict cites the portal's published rule
+branding:
+  icon: check-square
+  color: green
+inputs:
+  path:
+    description: Directory (or .zip) of the built game, with index.html at its root
+    required: true
+  targets:
+    description: Comma-separated targets (crazygames,poki,playgama,devvit,generic)
+    default: crazygames,poki,playgama,devvit,generic
+  fail-on:
+    description: blocked | fixes | never
+    default: blocked
+  static-only:
+    description: "true = skip the browser run (seconds, no Chromium download)"
+    default: "false"
+outputs:
+  json:
+    description: Path of the JSON record
+    value: ${{ steps.pf.outputs.json }}
+runs:
+  using: composite
+  steps:
+    - if: inputs.static-only != 'true'
+      shell: bash
+      run: |
+        python3 -m pip install --quiet "playwright==1.48.0" "pillow>=10"
+        python3 -m playwright install --with-deps chromium >/dev/null
+    - id: pf
+      shell: bash
+      env:
+        PYTHONPATH: ${{ github.action_path }}
+      run: |
+        out="$RUNNER_TEMP/portalpreflight.json"
+        extra=""; [ "${{ inputs.static-only }}" = "true" ] && extra="--static-only"
+        python3 -m portalpreflight "${{ inputs.path }}" --targets "${{ inputs.targets }}" --fail-on "${{ inputs.fail-on }}" \
+          --format github --json-out "$out" $extra
+        echo "json=$out" >> "$GITHUB_OUTPUT"
