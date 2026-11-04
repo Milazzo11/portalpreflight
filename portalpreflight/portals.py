@@ -2,11 +2,12 @@
 
 A rule maps a measured key to a limit. Verdict per rule: pass | fail | warn (advisory rule broken) | n/a (not measured).
 Portal rules change: every rule carries `checked` (the date its source was last read); ruleradar snapshots
-CrazyGames daily. Never add a number without a source URL.
+every quoted page daily (corpus/check_quotes.py). Never add a number without a source URL.
 """
 
 CG = "https://docs.crazygames.com/requirements/technical/"
 POKI = "https://developers.poki.com/guide/requirements-quality"
+DV = "https://developers.reddit.com/docs/capabilities/devvit-web/devvit_web_overview"
 PG = "https://wiki.playgama.com/playgama/game-requirements/technical-requirements.md"
 
 # rule: (id, key, op, limit, level, text, source, quote)
@@ -20,20 +21,20 @@ PORTALS = {
             ("cg-files", "file_count", "<=", 1500, "must", "<= 1500 files", CG,
              "There's a file count limit on 1500 files"),
             ("cg-initial", "initial_mb", "<=", 50, "must", "initial download <= 50 MB", CG,
-             "The game must have an initial download size <= 50MB"),
+             "The game must have an initial download size ≤ 50MB"),
             ("cg-mobile", "initial_mb", "<=", 20, "should", "initial download <= 20 MB (mobile homepage)", CG,
-             "In order to be eligible for the mobile homepage, the initial download size needs to be <= 20MB."),
+             "In order to be eligible for the mobile homepage, the initial download size needs to be ≤ 20MB."),
             ("cg-relative", "absolute_paths", "==", 0, "must", "relative paths only", CG,
              "Use only relative paths when referring to other files in the game bundle."),
-            ("cg-ttg", "ttg_s", "<=", 20, "should", "time to gameplay <= 20 s", CG,
-             "our QA team will evaluate based on the time it takes to reach gameplay (<= 20 seconds)"),
+            ("cg-ttg", "ttg_s", "<=", 20, "should", "time to gameplay <= 20 s (externally hosted files)", CG,
+             "For externally hosted/loaded files our QA team will evaluate based on the time it takes to reach gameplay (≤ 20 seconds)"),
         ]},
     "poki": {
         "name": "Poki", "checked": "2026-11-04", "rules": [
             ("poki-external", "external_requests", "==", 0, "must", "no external requests", POKI,
              "No external requests. Poki blocks all external requests by default."),
             ("poki-load", "ttg_s", "<=", 10, "should", "playable within 10 s", POKI,
-             "Players tend to move to another game if loading takes more than 10 seconds."),
+             "Players tend to move to another game if loading takes more than 10 seconds"),
             ("poki-ads", "foreign_ad_sdks", "==", 0, "must", "no other ad systems", POKI,
              "Poki's SDK handles ads, so no other ad systems are allowed."),
         ]},
@@ -52,10 +53,10 @@ PORTALS = {
         ]},
     "devvit": {
         "name": "Reddit Devvit Web", "checked": "2026-11-04", "rules": [
-            ("dv-external", "external_requests", "==", 0, "must", "no external requests (webview CSP)",
-             "https://developers.reddit.com/docs/", "(observed in our Devvit app builds; not quoted)"),
-            ("dv-remote-code", "remote_scripts", "==", 0, "must", "no remote scripts",
-             "https://developers.reddit.com/docs/", "(observed in our Devvit app builds; not quoted)"),
+            ("dv-external", "external_requests", "==", 0, "must", "no external requests from the client (webview CSP)", DV,
+             "You can't have any external requests other than the app's webview domain."),
+            ("dv-remote-code", "remote_scripts", "==", 0, "must", "no remote scripts", DV,
+             "You can't have any external requests other than the app's webview domain."),
         ]},
     "generic": {
         "name": "Any portal (hygiene)", "checked": "2026-11-04", "rules": [

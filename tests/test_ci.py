@@ -25,6 +25,17 @@ class CiReport(unittest.TestCase):
         self.assertIn("### hextris", page)
 
 
+class Rules(unittest.TestCase):
+    def test_ppf1_every_sourced_rule_has_a_real_quote(self):
+        sys.path.insert(0, str(ROOT))
+        from portalpreflight import portals
+        for t, p in portals.PORTALS.items():
+            for r in p["rules"]:
+                if t != "generic":
+                    self.assertTrue(r[6].startswith("https://"), r[0])
+                    self.assertTrue(r[7] and not r[7].startswith("("), r[0])
+
+
 class ActionYml(unittest.TestCase):
     def test_no_expression_inside_a_run_script(self):
         """Inputs in run: are shell injection in a public Action: they must go through env."""
