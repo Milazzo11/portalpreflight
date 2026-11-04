@@ -1,0 +1,685 @@
+{
+ "date": "2026-11-04",
+ "games": [
+  {
+   "name": "2048",
+   "repo": "https://github.com/gabrielecirulli/2048",
+   "commit": "478b6ec346e3787f589e4af751378d06ded4cbbc",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 6.7,
+     "ttg_s": 0.85,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 7.3,
+     "ttg_s": 1.12,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 7.1,
+     "ttg_s": 0.92,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "hextris",
+   "repo": "https://github.com/hextris/hextris",
+   "commit": "3f4847dc8fd7dab3d1c87e6324b9159d92fbd396",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "BLOCKED",
+    "playgama": "BLOCKED",
+    "devvit": "BLOCKED",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 13.2,
+     "ttg_s": 7.18,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 12.0,
+     "ttg_s": 6.13,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 12.4,
+     "ttg_s": 6.45,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "clumsy-bird",
+   "repo": "https://github.com/ellisonleao/clumsy-bird",
+   "commit": "fae3d487d5102af29fb3f78431cbd45e9b83aed3",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 9.0,
+     "ttg_s": 3.27,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 9.0,
+     "ttg_s": 3.26,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 8.9,
+     "ttg_s": 3.14,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "floppybird",
+   "repo": "https://github.com/nebez/floppybird",
+   "commit": "efd2c7f740299688e524e57bfa3f635c9b857f82",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "BLOCKED",
+    "playgama": "BLOCKED",
+    "devvit": "BLOCKED",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 7.1,
+     "ttg_s": 1.61,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 7.2,
+     "ttg_s": 1.6,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 6.9,
+     "ttg_s": 1.51,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "javascript-tetris",
+   "repo": "https://github.com/jakesgordon/javascript-tetris",
+   "commit": "e5c0c42f7dac0f3514a55eff656c6e22e95d68ed",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 6.2,
+     "ttg_s": 0.88,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 6.2,
+     "ttg_s": 0.79,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 6.2,
+     "ttg_s": 0.77,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "javascript-pong",
+   "repo": "https://github.com/jakesgordon/javascript-pong",
+   "commit": "ca3240536e4f79ab7144388e56ed19de715b6662",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 6.6,
+     "ttg_s": 0.94,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 6.7,
+     "ttg_s": 1.0,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 6.6,
+     "ttg_s": 0.87,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "javascript-breakout",
+   "repo": "https://github.com/jakesgordon/javascript-breakout",
+   "commit": "eed59e2affa9423b93d2ac8ff93061bb88b33284",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 7.9,
+     "ttg_s": 0.85,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 7.5,
+     "ttg_s": 1.43,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 7.4,
+     "ttg_s": 1.25,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "javascript-racer",
+   "repo": "https://github.com/jakesgordon/javascript-racer",
+   "commit": "3e8a060b5900755db27f899612a74a77427c853e",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 5.9,
+     "ttg_s": 0.65,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 5.4,
+     "ttg_s": 0.64,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 5.5,
+     "ttg_s": 0.64,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "javascript-boulderdash",
+   "repo": "https://github.com/jakesgordon/javascript-boulderdash",
+   "commit": "61f0bb59785878669a28796c471845bb9a91402e",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 6.6,
+     "ttg_s": 0.83,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 6.6,
+     "ttg_s": 0.86,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 6.7,
+     "ttg_s": 0.88,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "javascript-gauntlet",
+   "repo": "https://github.com/jakesgordon/javascript-gauntlet",
+   "commit": "2f9020dc642ba3bf98fd20a5251bed5c9d84d924",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 11.7,
+     "ttg_s": 5.17,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 11.5,
+     "ttg_s": 5.0,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 11.7,
+     "ttg_s": 5.16,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "pacman",
+   "repo": "https://github.com/daleharvey/pacman",
+   "commit": "3acc5e2bb10e93c8f08eceb1562e1a16d672a1c6",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "READY"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 7.5,
+     "ttg_s": 1.86,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 7.0,
+     "ttg_s": 1.87,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 7.7,
+     "ttg_s": 1.96,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "Astray",
+   "repo": "https://github.com/wwwtyro/Astray",
+   "commit": "d3c4f61f2cbbe35752fbfa205f85a41d7f9fe0f0",
+   "verdicts": {
+    "crazygames": "BLOCKED",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "BLOCKED"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 11.7,
+     "ttg_s": 1.78,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 12.2,
+     "ttg_s": 1.97,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 11.7,
+     "ttg_s": 1.74,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "adarkroom",
+   "repo": "https://github.com/doublespeakgames/adarkroom",
+   "commit": "1fada4620b6c66bd07bf15a3f1eb8223df8bc1d7",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "BLOCKED",
+    "playgama": "BLOCKED",
+    "devvit": "BLOCKED",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 10.3,
+     "ttg_s": 4.56,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 9.9,
+     "ttg_s": 4.57,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 10.4,
+     "ttg_s": 4.58,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "Captain-Rogers",
+   "repo": "https://github.com/EnclaveGames/Captain-Rogers",
+   "commit": "5b4336d66828e5688b3bffbc4c4aa8af04598583",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 11.9,
+     "ttg_s": 5.16,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 12.0,
+     "ttg_s": 5.17,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 12.1,
+     "ttg_s": 5.27,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "radius-raid-js13k",
+   "repo": "https://github.com/jackrugile/radius-raid-js13k",
+   "commit": "361ab5166570cfc8a29a4fc15c9afba566117b66",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 9.5,
+     "ttg_s": 4.45,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 10.0,
+     "ttg_s": 5.2,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 9.6,
+     "ttg_s": 4.44,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "HexGL",
+   "repo": "https://github.com/BKcore/HexGL",
+   "commit": "6addc95a2fce3bf05f4d751823cc054c61a16d68",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "BLOCKED",
+    "playgama": "BLOCKED",
+    "devvit": "BLOCKED",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 8.9,
+     "ttg_s": 1.9,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 9.4,
+     "ttg_s": 1.85,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 8.9,
+     "ttg_s": 1.95,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "q1k3",
+   "repo": "https://github.com/phoboslab/q1k3",
+   "commit": "8ee934856c3f5de3c584724b9dd554314a911694",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "READY",
+    "playgama": "READY",
+    "devvit": "READY",
+    "generic": "BLOCKED"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 10.2,
+     "ttg_s": 4.42,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 9.9,
+     "ttg_s": 4.22,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 9.9,
+     "ttg_s": 4.14,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "Gamedev-Phaser-Content-Kit",
+   "repo": "https://github.com/end3r/Gamedev-Phaser-Content-Kit",
+   "commit": "307c14914d6e5cfe36a42feb028e6fa1e4013dc1",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "BLOCKED",
+    "playgama": "BLOCKED",
+    "devvit": "BLOCKED",
+    "generic": "FIXES"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 6.3,
+     "ttg_s": 0.67,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 6.2,
+     "ttg_s": 0.67,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 6.2,
+     "ttg_s": 0.69,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "untrusted",
+   "repo": "https://github.com/AlexNisnevich/untrusted",
+   "commit": "ab4a8ed28058a3f4b53cc48972b756ef9c97e862",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "BLOCKED",
+    "playgama": "BLOCKED",
+    "devvit": "BLOCKED",
+    "generic": "BLOCKED"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 8.1,
+     "ttg_s": 1.91,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 7.7,
+     "ttg_s": 2.0,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 8.3,
+     "ttg_s": 1.94,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  },
+  {
+   "name": "cube-composer",
+   "repo": "https://github.com/sharkdp/cube-composer",
+   "commit": "83e5b66b05bd66b6ece56fd1b484f8cc73e136b1",
+   "verdicts": {
+    "crazygames": "READY",
+    "poki": "BLOCKED",
+    "playgama": "BLOCKED",
+    "devvit": "BLOCKED",
+    "generic": "BLOCKED"
+   },
+   "browser_error": null,
+   "runs": [
+    {
+     "rc": 0,
+     "secs": 6.7,
+     "ttg_s": 0.98,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 7.2,
+     "ttg_s": 0.87,
+     "stderr": ""
+    },
+    {
+     "rc": 0,
+     "secs": 6.7,
+     "ttg_s": 0.89,
+     "stderr": ""
+    }
+   ],
+   "crash": false
+  }
+ ]
+}

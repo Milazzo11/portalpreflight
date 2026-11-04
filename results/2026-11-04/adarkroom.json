@@ -1,0 +1,410 @@
+{
+ "tool": "portalpreflight 0.1.0",
+ "game": "adarkroom",
+ "date": "2026-11-04",
+ "entry": "index.html",
+ "root_index": true,
+ "file_count": 232,
+ "total_mb": 10.28,
+ "non_latin_names": 0,
+ "non_latin_examples": [],
+ "big_files": [],
+ "absolute_paths": 0,
+ "absolute_path_examples": [],
+ "remote_scripts": 2,
+ "remote_script_examples": [
+  "https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js",
+  "https://www.googletagmanager.com/gtag/js?id=G-606P6J79WH"
+ ],
+ "insecure_urls": 2,
+ "insecure_examples": [
+  "http://i.imgur.com/DMdnDYq.png",
+  "http://i.imgur.com/bLWWj4r.png"
+ ],
+ "insecure_js_strings": [
+  "http://adarkroom.doublespeakgames.com",
+  "http://www.reddit.com/submit?url="
+ ],
+ "referenced_hosts": [
+  "adarkroom.doublespeakgames.com",
+  "ajax.googleapis.com",
+  "github.com",
+  "i.imgur.com",
+  "itunes.apple.com",
+  "penrose.doublespeakgames.com",
+  "play.google.com",
+  "plus.google.com",
+  "twitter.com",
+  "www.facebook.com",
+  "www.googletagmanager.com",
+  "www.reddit.com"
+ ],
+ "foreign_ad_sdks": 0,
+ "ad_sdks": [],
+ "portal_sdks": [],
+ "eval_uses": 5,
+ "throttled": true,
+ "viewport": "1280x720",
+ "first_paint_s": 2.46,
+ "renders": true,
+ "ttg_s": 4.57,
+ "ttg_basis": "first non-blank frame + network quiet 1 s",
+ "animated_idle": false,
+ "touch_changes_frame": false,
+ "audio_ctx_before_tap": [
+  "running"
+ ],
+ "audio_ctx_after_tap": [
+  "running"
+ ],
+ "audio_play_rejects": [],
+ "axe_violations": 2,
+ "axe_rules": {
+  "html-has-lang": 1,
+  "link-name": 1
+ },
+ "external_requests": 4,
+ "external_hosts": [
+  "ajax.googleapis.com",
+  "www.google-analytics.com",
+  "www.googletagmanager.com"
+ ],
+ "external_urls": [
+  "https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js",
+  "https://www.google-analytics.com/g/collect?v=2&tid=G-606P6J79WH&gtm=45je6b21v899598610za200zd899598610xf1&_p=1793789914130&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AEAAAAQ&ae=a&cid=347442712.1793789916&frm=0&ngs=1&pscdl=noapi&rcb=17&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253AA-Brand%3B8.0.0.0%7CChromium%3B156.0.8078.4%7CHeadlessChrome%3B156.0.8078.4&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&_s=2&tag_exp=115938465~115938468~118897920~118897930~120213116~120385423~120412526~120420414~120469145~120469153~121246026~121246034~123691370~123814183~123814946&sid=1793789915&sct=1&seg=0&dl=http%3A%2F%2F127.0.0.1%2Fgame%2Findex.html&dt=A%20Dark%20Room&en=scroll&epn.percent_scrolled=90&_et=132&tfd=8237",
+  "https://www.google-analytics.com/g/collect?v=2&tid=G-606P6J79WH&gtm=45je6b21v899598610za208zd899598610xf1&_p=1793789914130&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=347442712.1793789916&frm=0&ngs=1&pscdl=noapi&rcb=17&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253AA-Brand%3B8.0.0.0%7CChromium%3B156.0.8078.4%7CHeadlessChrome%3B156.0.8078.4&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&_s=1&tag_exp=115938465~115938468~118897920~118897930~120213116~120385423~120412526~120420414~120469145~120469153~121246026~121246034~123691370~123814183~123814946&sid=1793789915&sct=1&seg=0&dl=http%3A%2F%2F127.0.0.1%2Fgame%2Findex.html&dt=A%20Dark%20Room&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=3083",
+  "https://www.googletagmanager.com/gtag/js?id=G-606P6J79WH"
+ ],
+ "initial_requests": 76,
+ "initial_mb": 3.01,
+ "initial_mb_basis": "gzip bytes of own files requested before ttg (external bytes not counted)",
+ "outside_subpath_requests": [],
+ "failed_requests": [],
+ "page_errors": 0,
+ "page_error_examples": [],
+ "input_errors": 0,
+ "input_error_examples": [],
+ "missing_files": 0,
+ "missing_file_examples": [],
+ "console_errors": [],
+ "peak_js_heap_mb": 14.0,
+ "loadavg1": 9.8,
+ "portals": {
+  "crazygames": {
+   "name": "CrazyGames",
+   "checked": "2026-11-04",
+   "verdict": "READY",
+   "rules": [
+    {
+     "id": "cg-total",
+     "key": "total_mb",
+     "value": 10.28,
+     "limit": 250,
+     "op": "<=",
+     "level": "must",
+     "result": "pass",
+     "text": "total file size <= 250 MB",
+     "source": "https://docs.crazygames.com/requirements/technical/",
+     "quote": "A maximum total file size of 250MB is allowed."
+    },
+    {
+     "id": "cg-files",
+     "key": "file_count",
+     "value": 232,
+     "limit": 1500,
+     "op": "<=",
+     "level": "must",
+     "result": "pass",
+     "text": "<= 1500 files",
+     "source": "https://docs.crazygames.com/requirements/technical/",
+     "quote": "There's a file count limit on 1500 files"
+    },
+    {
+     "id": "cg-initial",
+     "key": "initial_mb",
+     "value": 3.01,
+     "limit": 50,
+     "op": "<=",
+     "level": "must",
+     "result": "pass",
+     "text": "initial download <= 50 MB",
+     "source": "https://docs.crazygames.com/requirements/technical/",
+     "quote": "The game must have an initial download size <= 50MB"
+    },
+    {
+     "id": "cg-mobile",
+     "key": "initial_mb",
+     "value": 3.01,
+     "limit": 20,
+     "op": "<=",
+     "level": "should",
+     "result": "pass",
+     "text": "initial download <= 20 MB (mobile homepage)",
+     "source": "https://docs.crazygames.com/requirements/technical/",
+     "quote": "In order to be eligible for the mobile homepage, the initial download size needs to be <= 20MB."
+    },
+    {
+     "id": "cg-relative",
+     "key": "absolute_paths",
+     "value": 0,
+     "limit": 0,
+     "op": "==",
+     "level": "must",
+     "result": "pass",
+     "text": "relative paths only",
+     "source": "https://docs.crazygames.com/requirements/technical/",
+     "quote": "Use only relative paths when referring to other files in the game bundle."
+    },
+    {
+     "id": "cg-ttg",
+     "key": "ttg_s",
+     "value": 4.57,
+     "limit": 20,
+     "op": "<=",
+     "level": "should",
+     "result": "pass",
+     "text": "time to gameplay <= 20 s",
+     "source": "https://docs.crazygames.com/requirements/technical/",
+     "quote": "our QA team will evaluate based on the time it takes to reach gameplay (<= 20 seconds)"
+    }
+   ]
+  },
+  "poki": {
+   "name": "Poki",
+   "checked": "2026-11-04",
+   "verdict": "BLOCKED",
+   "rules": [
+    {
+     "id": "poki-external",
+     "key": "external_requests",
+     "value": 4,
+     "limit": 0,
+     "op": "==",
+     "level": "must",
+     "result": "fail",
+     "text": "no external requests",
+     "source": "https://developers.poki.com/guide/requirements-quality",
+     "quote": "No external requests. Poki blocks all external requests by default."
+    },
+    {
+     "id": "poki-load",
+     "key": "ttg_s",
+     "value": 4.57,
+     "limit": 10,
+     "op": "<=",
+     "level": "should",
+     "result": "pass",
+     "text": "playable within 10 s",
+     "source": "https://developers.poki.com/guide/requirements-quality",
+     "quote": "Players tend to move to another game if loading takes more than 10 seconds."
+    },
+    {
+     "id": "poki-ads",
+     "key": "foreign_ad_sdks",
+     "value": 0,
+     "limit": 0,
+     "op": "==",
+     "level": "must",
+     "result": "pass",
+     "text": "no other ad systems",
+     "source": "https://developers.poki.com/guide/requirements-quality",
+     "quote": "Poki's SDK handles ads, so no other ad systems are allowed."
+    }
+   ]
+  },
+  "playgama": {
+   "name": "Playgama",
+   "checked": "2026-11-04",
+   "verdict": "BLOCKED",
+   "rules": [
+    {
+     "id": "pg-total",
+     "key": "total_mb",
+     "value": 10.28,
+     "limit": 300,
+     "op": "<=",
+     "level": "must",
+     "result": "pass",
+     "text": "archive <= 300 MB",
+     "source": "https://wiki.playgama.com/playgama/game-requirements/technical-requirements.md",
+     "quote": "The total size of all game files does not exceed 300 MB"
+    },
+    {
+     "id": "pg-index",
+     "key": "root_index",
+     "value": true,
+     "limit": null,
+     "op": "true",
+     "level": "must",
+     "result": "pass",
+     "text": "index.html at the root",
+     "source": "https://wiki.playgama.com/playgama/game-requirements/technical-requirements.md",
+     "quote": "An index.html file is added to the root of the archive."
+    },
+    {
+     "id": "pg-latin",
+     "key": "non_latin_names",
+     "value": 0,
+     "limit": 0,
+     "op": "==",
+     "level": "must",
+     "result": "pass",
+     "text": "Latin file names only",
+     "source": "https://wiki.playgama.com/playgama/game-requirements/technical-requirements.md",
+     "quote": "File and folder names use only Latin characters."
+    },
+    {
+     "id": "pg-external",
+     "key": "external_requests",
+     "value": 4,
+     "limit": 0,
+     "op": "==",
+     "level": "must",
+     "result": "fail",
+     "text": "no external resources",
+     "source": "https://wiki.playgama.com/playgama/game-requirements/technical-requirements.md",
+     "quote": "The game loads no external resources: everything it needs ships inside the archive."
+    },
+    {
+     "id": "pg-memory",
+     "key": "peak_js_heap_mb",
+     "value": 14.0,
+     "limit": 2000,
+     "op": "<=",
+     "level": "must",
+     "result": "pass",
+     "text": "startup memory < 2 GB (JS heap measured)",
+     "source": "https://wiki.playgama.com/playgama/game-requirements/technical-requirements.md",
+     "quote": "The game peaks below 2 GB of memory while it starts."
+    }
+   ]
+  },
+  "devvit": {
+   "name": "Reddit Devvit Web",
+   "checked": "2026-11-04",
+   "verdict": "BLOCKED",
+   "rules": [
+    {
+     "id": "dv-external",
+     "key": "external_requests",
+     "value": 4,
+     "limit": 0,
+     "op": "==",
+     "level": "must",
+     "result": "fail",
+     "text": "no external requests (webview CSP)",
+     "source": "https://developers.reddit.com/docs/",
+     "quote": "(observed in our Devvit app builds; not quoted)"
+    },
+    {
+     "id": "dv-remote-code",
+     "key": "remote_scripts",
+     "value": 2,
+     "limit": 0,
+     "op": "==",
+     "level": "must",
+     "result": "fail",
+     "text": "no remote scripts",
+     "source": "https://developers.reddit.com/docs/",
+     "quote": "(observed in our Devvit app builds; not quoted)"
+    }
+   ]
+  },
+  "generic": {
+   "name": "Any portal (hygiene)",
+   "checked": "2026-11-04",
+   "verdict": "FIXES",
+   "rules": [
+    {
+     "id": "gen-crash",
+     "key": "page_errors",
+     "value": 0,
+     "limit": 0,
+     "op": "==",
+     "level": "must",
+     "result": "pass",
+     "text": "no uncaught JS errors on load",
+     "source": "",
+     "quote": "an uncaught exception at start is the most common QA rejection"
+    },
+    {
+     "id": "gen-missing",
+     "key": "missing_files",
+     "value": 0,
+     "limit": 0,
+     "op": "==",
+     "level": "must",
+     "result": "pass",
+     "text": "every file the game requests exists (no 404s)",
+     "source": "",
+     "quote": ""
+    },
+    {
+     "id": "gen-input-crash",
+     "key": "input_errors",
+     "value": 0,
+     "limit": 0,
+     "op": "==",
+     "level": "should",
+     "result": "pass",
+     "text": "no uncaught JS errors on first tap/click/Space",
+     "source": "",
+     "quote": ""
+    },
+    {
+     "id": "gen-render",
+     "key": "renders",
+     "value": true,
+     "limit": null,
+     "op": "true",
+     "level": "must",
+     "result": "pass",
+     "text": "draws something within the timeout",
+     "source": "",
+     "quote": ""
+    },
+    {
+     "id": "gen-mixed",
+     "key": "insecure_urls",
+     "value": 2,
+     "limit": 0,
+     "op": "==",
+     "level": "should",
+     "result": "warn",
+     "text": "no http:// resources loaded (portals serve https)",
+     "source": "",
+     "quote": ""
+    },
+    {
+     "id": "gen-input",
+     "key": "touch_changes_frame",
+     "value": false,
+     "limit": null,
+     "op": "true",
+     "level": "should",
+     "result": "warn",
+     "text": "a tap changes the screen (mobile input)",
+     "source": "",
+     "quote": ""
+    },
+    {
+     "id": "gen-a11y",
+     "key": "axe_violations",
+     "value": 2,
+     "limit": 0,
+     "op": "==",
+     "level": "should",
+     "result": "warn",
+     "text": "axe-core WCAG 2.2 AA violations = 0",
+     "source": "",
+     "quote": ""
+    }
+   ]
+  }
+ },
+ "runs": [
+  4.56,
+  4.57,
+  4.58
+ ]
+}
