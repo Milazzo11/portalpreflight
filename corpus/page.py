@@ -16,7 +16,7 @@ def main(out, page):
     tg = portals.DEFAULT_TARGETS
     names = [portals.PORTALS[t]["name"].split(" (")[0] for t in tg]
     crashes = sum(g["crash"] for g in summ["games"])
-    L = ["<!-- noindex until the publish word (R&D 102a) -->", f"# Portal Preflight: 20 open-source HTML5 games ({summ['date']})", "",
+    L = [f"# Portal Preflight: 20 open-source HTML5 games ({summ['date']})", "",
          f"{len(recs)} games from GitHub at pinned commits, each run as-is from its repository root. Tool crashes: {crashes}. "
          "Each game: Chromium on a throttled 4G link (9 Mbps, 170 ms RTT) with 4x CPU slowdown, served gzip-compressed under a "
          "subpath the way portals host it; median of the runs by time to gameplay. Verdicts cite each portal's published "

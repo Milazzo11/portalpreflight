@@ -1,5 +1,5 @@
 name: Portal Preflight
-description: Portal-readiness scorecard for an HTML5 game build (CrazyGames, Poki, Playgama, Devvit) - each verdict cites the portal's published rule
+description: Portal-readiness scorecard for HTML5 game builds (CrazyGames, Poki, Playgama, Devvit), citing each rule
 branding:
   icon: check-square
   color: green

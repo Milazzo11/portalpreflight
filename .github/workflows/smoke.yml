@@ -1,0 +1,18 @@
+# Proves the README's `uses:` line works from outside: resolves the published tag, not ./
+name: smoke
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  published-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - run: mkdir build && echo '<!doctype html><title>t</title><canvas></canvas>' > build/index.html
+      - id: pf
+        uses: Milazzo11/portalpreflight@v0.1.0
+        with:
+          path: build
+          fail-on: never
+      - env:
+          OUT: ${{ steps.pf.outputs.json }}
+        run: python3 -c "import json,os; print(list(json.load(open(os.environ['OUT'])))[:8])"

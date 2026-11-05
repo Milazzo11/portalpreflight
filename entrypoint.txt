@@ -1,4 +1,5 @@
 portalpreflight - entrypoint (R&D experiment 102a, iLazy task 7488, 2026-11-04)
+HEALTH: events=its scorecards | slo=tests pass per `python3 -m unittest discover tests` | metric=none (candidate web gate; no portal submission yet) | counter=none (no metric to guard; used by learn-explore-rd) | owner=7488
 Portal-readiness scorecard for ANY HTML5 game build (engine-agnostic generalisation of imaker tools/web_preflight.py,
 which is Flutter-only and stays imaker's gate). Code: portalpreflight/ (static.py stdlib bundle checks; dynamic.py
 Playwright run served under /game/ subpath, 4G + 4x CPU; portals.py cited rules per target; cli.py scorecards
@@ -15,3 +16,4 @@ ENERGY STAR: yes - deterministic, 0 tokens per run.
 STATUS
 2026-11-04 v0.1.0: 20/20 open-source games, 0 crashes, 3 throttled runs each (results/2026-11-04/). GitHub-hosted Action run not yet exercised (needs a GitHub origin; corpus.yml runs on a corpus-* tag). Public flip + Marketplace + forum posts: controller go pending (PPF-3).
 2026-11-04 GitHub-hosted: Action on 20/20 games, 0 crashes (run 41830136103, corpus-results:corpus-2026-11-04b); 100/100 verdict cells identical to the node run. All portal quotes verified verbatim, Devvit now quoted. action.yml hardened (inputs via env, venv).
+2026-11-04 PUBLIC (Overseer go 21:09 via controller): pre-flip blob scan 0 secrets; .pyc removed from the tip (old commits still hold them: /home/max paths only, no rewrite per GL-GIT3). Release tags are immutable (GL-GIT3), so `uses:` pins @v0.1.0, no floating @v0. smoke.yml (manual) proves the published tag resolves.
