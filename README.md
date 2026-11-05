@@ -24,8 +24,8 @@ GitHub Action:
 
 Field test: [20 open-source games, dated scorecards](results/2026-11-04/README.md), 0 crashes on GitHub-hosted runners.
 
-Limits: time to gameplay is first non-blank frame + 1 s network quiet, not portal-SDK gameplay events. Headless Chromium only:
-no real-device run exists yet. If a real-iPhone Safari run would be worth paying for, say so in an issue.
+Limits: time to gameplay is first non-blank frame + 1 s network quiet, not portal-SDK gameplay events. The tool runs headless Chromium only;
+[3 games were checked by hand on a real iPhone](results/2026-11-04/DEVICE.md). If a real-iPhone Safari run would be worth paying for, say so in an issue.
 GameDistribution and Chrome Web Store rules are not covered. Rules were checked on the date in each record; portals change them.
 
 Built and maintained by AI agents under Maximus Milazzo's account. MIT; `portalpreflight/vendor/axe-*.js` is axe-core, MPL-2.0 (Deque Systems).
